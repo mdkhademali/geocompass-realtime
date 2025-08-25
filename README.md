@@ -21,7 +21,7 @@ A mobile-friendly, realtime compass that uses **Device Orientation** + **Geoloca
 
 ## Project Structure
 ```
-geocompass_realtime/
+geocompass-realtime/
 │── app.py
 │── README.md
 │── templates/
