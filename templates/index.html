@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Realtime Geographical Compass</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Realtime Geographical Compass 🧭</h1>
+      <p class="sub">Works best on a phone with motion sensors. Use HTTPS or localhost.</p>
+    </header>
+
+    <section class="controls">
+      <div class="row">
+        <button id="enableSensors">Enable Sensors</button>
+        <label class="checkbox">
+          <input type="checkbox" id="useTrueNorth" />
+          <span>Use True North (if available)</span>
+        </label>
+      </div>
+
+      <div class="row target-row">
+        <label>Target:</label>
+        <select id="targetSelect">
+          <option value="north">North</option>
+          <option value="qibla">Qibla</option>
+          <option value="custom">Custom</option>
+        </select>
+        <input id="customLat" type="number" step="0.000001" placeholder="Lat" style="display:none" />
+        <input id="customLon" type="number" step="0.000001" placeholder="Lon" style="display:none" />
+        <button id="setCustom" style="display:none">Set</button>
+      </div>
+    </section>
+
+    <section class="compass-wrap">
+      <div class="compass" id="compass">
+        <div class="dial">
+          <div class="tick major" style="transform: rotate(0deg) translateY(-140px)">N</div>
+          <div class="tick major" style="transform: rotate(90deg) translateY(-140px)">E</div>
+          <div class="tick major" style="transform: rotate(180deg) translateY(-140px)">S</div>
+          <div class="tick major" style="transform: rotate(270deg) translateY(-140px)">W</div>
+          <!-- minor ticks -->
+          <div class="ticks" id="ticks"></div>
+        </div>
+        <!-- Needles -->
+        <div class="needle needle-north" id="needleNorth"></div>
+        <div class="needle needle-target" id="needleTarget" title="Points to selected target"></div>
+        <div class="hub"></div>
+      </div>
+    </section>
+
+    <section class="readouts">
+      <div class="card">
+        <h3>Heading</h3>
+        <div><span id="heading">—</span>°</div>
+        <small id="headingSrc">source: —</small>
+      </div>
+      <div class="card">
+        <h3>Location</h3>
+        <div>Lat/Lon: <span id="lat">—</span>, <span id="lon">—</span></div>
+        <div>Accuracy: <span id="acc">—</span> m</div>
+        <div>Speed: <span id="spd">—</span> m/s</div>
+      </div>
+      <div class="card">
+        <h3>Target</h3>
+        <div>Name: <span id="targetName">North</span></div>
+        <div>Bearing: <span id="bearing">—</span>°</div>
+        <div>Distance: <span id="distance">—</span> km</div>
+      </div>
+      <div class="card">
+        <h3>Tips</h3>
+        <ul>
+          <li>Move the phone in a figure‑8 to calibrate.</li>
+          <li>Avoid metal surfaces and magnets.</li>
+          <li>For iOS: you must tap <b>Enable Sensors</b>.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
