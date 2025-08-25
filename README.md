@@ -30,27 +30,6 @@ geocompass_realtime/
 │     ├── style.css
 │     └── main.js
 ```
-
----
-
-## Quick Start
-
-### 1) Install & Run
-```bash
-pip install flask
-python app.py
-```
-Open: `http://localhost:5000/`
-
-**Mobile test on same Wi‑Fi**: find your computer’s LAN IP (e.g. `192.168.0.10`) and open `http://<LAN-IP>:5000/` on your phone.
-
-> **Sensors & HTTPS**: Many browsers require **HTTPS or localhost** for motion/geo sensors. Running via `localhost` is fine. For phone over LAN, consider a self‑signed HTTPS dev proxy or use Android Chrome flags for testing only.
-
-### 2) Enable Sensors
-- On iOS (Safari): tap **Enable Sensors** when prompted.
-- Make a **figure‑8** motion to calibrate the compass.
-- Avoid magnets/metal surfaces.
-
 ---
 
 ## How It Works (Math)
